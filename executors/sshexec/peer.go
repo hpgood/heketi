@@ -69,7 +69,7 @@ func (s *SshExecutor) GlusterdCheck(host string) error {
 
 	logger.Info("Check Glusterd service status in node %v", host)
 	commands := []string{
-		fmt.Sprintf("systemctl status glusterd"),
+		fmt.Sprintf("kill -0 `cat /var/run/glusterd.pid`"),
 	}
 	_, err := s.RemoteExecutor.RemoteCommandExecute(host, commands, 10)
 	if err != nil {
