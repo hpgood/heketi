@@ -11,13 +11,13 @@ please build a custom image ,using:
 `docker build -t gluster/gluster-centos:custom . `
 
 Please edit glusterfs-daemonset.yaml,and change 
-  gluster/gluster-centos:latest
+  `gluster/gluster-centos:latest`
 to:
-  gluster/gluster-centos:custom
+  `gluster/gluster-centos:custom`
   
   
   
-don't forgot run the command:
+### don't forgot run the command:
   `modprobe dm_thin_pool `
 in  every node server.
   
