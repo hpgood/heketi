@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -eq 2 ]; then
+  if [[ "$1" == "status" &&  "$2" == "glusterd" ]]; then
+        echo "status glusterd"
+        if [ ! -f "/var/run/glusterd.pid" ]; then
+                echo "no found: /var/run/glusterd.pid"
+                echo "so the glusterd is not run!"
+                exit 1
+        fi
+        kill -0 `cat /var/run/glusterd.pid`
+        ret=$?
+        if [ $ret -eq 0 ]; then
+                echo "Message: glusterd is running!"
+        else
+                echo "Warning: glusterd is not run!"
+        fi
+        exit $ret
+  fi
+fi
+
+echo args=$*
+/usr/bin/systemctl_real $*
